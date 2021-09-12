@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch ./CustomerBDapp/frontend/src/index.js --output ./CustomerBDapp/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./CustomerBDapp/frontend/src/index.js --output ./CustomerBDapp/frontend/static/frontend/main.js"
   },
   "keywords": [],
   "author": "",
