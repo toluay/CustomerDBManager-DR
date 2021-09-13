@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER } from './types';
+import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER, GET_ERRORS } from './types';
 
 // GET LEADS
 export const getCustomers = () => (dispatch)=>{
@@ -39,6 +39,11 @@ export const addCustomer = (customer) => (dispatch) => {
           payload: res.data,
         });
       })
-      .catch((err) =>console.log(err));
+      .catch((err) =>{
+        console.log(err)
+        const errors  = { msg:err.response.data, status: err.response.status};
+        dispatch({type:GET_ERRORS, payload:errors});
+      });
+      
   };
   
