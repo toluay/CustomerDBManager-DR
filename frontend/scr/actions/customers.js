@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER, GET_ERRORS } from './types';
+import { createMessage} from './messages';
 
 // GET LEADS
 export const getCustomers = () => (dispatch)=>{
@@ -19,7 +20,7 @@ export const deleteCustomer = (id) => (dispatch) => {
   axios
     .delete(`/api/leads/${id}/`)
     .then((res) => {
-    //   dispatch(createMessage({ deleteCustomer: 'Customer Deleted' }));
+   dispatch(createMessage({ deleteCustomer: 'Customer Deleted' }));
       dispatch({
         type: DELETE_CUSTOMER,
         payload: id,
@@ -33,7 +34,7 @@ export const addCustomer = (customer) => (dispatch) => {
     axios
       .post('/api/leads/', customer)
       .then((res) => {
-        //dispatch(createMessage({ addCustomer: 'Customer Added' }));
+        dispatch(createMessage({ addCustomer: 'Customer Added' }));
         dispatch({
           type: ADD_CUSTOMER,
           payload: res.data,
