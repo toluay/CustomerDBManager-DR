@@ -6,7 +6,7 @@ import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
 
 import Header from './layout/Header';
-import Dashboard from './leads/Dashboard';
+import Dashboard from './customers/Dashboard';
 import Alerts from './layout/Alerts';
 
 import { Provider } from 'react-redux';
@@ -30,6 +30,11 @@ class App extends Component {
             <Fragment>
               <Header />
               <Alerts />
+              <div className="container">
+                <Switch>
+                  <PrivateRoute exact path="/" component={Dashboard} />
+                    </Switch>
+              </div>
               </Fragment>
           </Router>
         </AlertProvider>
