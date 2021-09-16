@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
- class Header extends Component {
 
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
+
+ class Header extends Component {
+  static propTypes = {
+    auth: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
+  };
+const { isAuthenticated, user } = this.props.auth;
 
     render() {
         <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -19,7 +28,7 @@ import { Link } from 'react-router-dom';
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a className="navbar-brand" href="#">
-              Lead Manager
+               Customer Manager
             </a>
           </div>
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -39,4 +48,8 @@ import { Link } from 'react-router-dom';
       </nav>
     }
 }
-export default Header;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Header);
