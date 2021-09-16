@@ -2,10 +2,10 @@ import axios from 'axios';
 import { GET_CUSTOMERS, DELETE_CUSTOMER, ADD_CUSTOMER, GET_ERRORS } from './types';
 import { createMessage,  returnErrors} from './messages';
 
-// GET LEADS
+// GET CUSTOEMRS
 export const getCustomers = () => (dispatch)=>{
     axios
-    .get('/api/leads/')
+    .get('/api/customers/')
     .then((res) => {
         dispatch({
           type: GET_CUSTOMERS,
@@ -15,10 +15,10 @@ export const getCustomers = () => (dispatch)=>{
       .catch((err) =>dispatch(returnErrors(err.response.data, err.response.status)));
 
 }
-//DELETE LEAD
+//DELETE CUSTOMER
 export const deleteCustomer = (id) => (dispatch) => {
   axios
-    .delete(`/api/leads/${id}/`)
+    .delete(`/api/customers/${id}/`)
     .then((res) => {
    dispatch(createMessage({ deleteCustomer: 'Customer Deleted' }));
       dispatch({
@@ -29,10 +29,10 @@ export const deleteCustomer = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// ADD LEAD
+// ADD CUSTOEMR
 export const addCustomer = (customer) => (dispatch) => {
     axios
-      .post('/api/leads/', customer)
+      .post('/api/customers/', customer)
       .then((res) => {
         dispatch(createMessage({ addCustomer: 'Customer Added' }));
         dispatch({
