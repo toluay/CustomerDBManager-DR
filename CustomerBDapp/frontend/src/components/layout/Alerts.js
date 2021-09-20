@@ -7,7 +7,7 @@ export class Alerts extends Component {
     static propTypes = {
         error: PropTypes.object.isRequired,
         message: PropTypes.object.isRequired,
-    }
+    };
     componentDidUpdate(prevProps) {
     this.props.alert.show('It works ');
     const { error, alert ,message} = this.props;
@@ -31,10 +31,11 @@ export class Alerts extends Component {
     render() {
         return <Fragment />;
       }
+      }
 
-  mapStateToProps = (state) => ({
+  const mapStateToProps = (state) => ({
         error: state.errors,
         message: state.messages,
     });
-}
+
 export default connect(mapStateToProps)(withAlert()(Alerts));
