@@ -30,7 +30,7 @@ export const deleteCustomer = (id) => (dispatc, getStateh) => {
     .catch((err) => console.log(err));
 };
 
-// ADD CUSTOEMR
+// ADD CUSTOMER
 export const addCustomer = (customer) => (dispatch, getState) => {
     axios
       .post('/api/customers/', customer, tokenConfig(getState))

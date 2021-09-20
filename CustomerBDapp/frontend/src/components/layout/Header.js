@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
- class Header extends Component {
+export class Header extends Component {
   static propTypes = {
     auth: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired,
   };
-const { isAuthenticated, user } = this.props.auth;
-const authLinks = (
+
+  render() {
+    const { isAuthenticated, user } = this.props.auth;
+
+    const authLinks = (
       <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
           <strong>{user ? `Welcome ${user.username}` : ''}</strong>
@@ -38,8 +40,9 @@ const authLinks = (
         </li>
       </ul>
     );
-    render() {
-        <nav className="navbar navbar-expand-sm navbar-light bg-light">
+
+    return (
+      <nav className="navbar navbar-expand-sm navbar-light bg-light">
         <div className="container">
           <button
             className="navbar-toggler"
@@ -54,15 +57,16 @@ const authLinks = (
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a className="navbar-brand" href="#">
-               Customer Manager
+              Lead Manager
             </a>
           </div>
-           {isAuthenticated ? authLinks : guestLinks}
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
-
       </nav>
-    }
+    );
+  }
 }
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
