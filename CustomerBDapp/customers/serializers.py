@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from Customers.models import Customer 
+from customers.models import Customer
 
 # Lead Serializer
 class CustomerSerializer(serializers.ModelSerializer):
