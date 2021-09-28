@@ -17,7 +17,7 @@ export const getCustomers = () => (dispatch, getState)=>{
 
 }
 //DELETE CUSTOMER
-export const deleteCustomer = (id) => (dispatc, getStateh) => {
+export const deleteCustomer = (id) => (dispatch, getState) => {
   axios
     .delete(`/api/customers/${id}/`, tokenConfig(getState))
     .then((res) => {
