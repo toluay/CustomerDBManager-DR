@@ -1,1 +1,1 @@
-web: gunicorn CustomerBDapp.wsgi --log-file -
+web: gunicorn Customerbdapp.wsgi --log-file -
